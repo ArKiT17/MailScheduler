@@ -25,7 +25,10 @@ public class AppUserService {
     }
 
     public AppUser findUserById(int id) {
-        return appUserRepository.findById(id).orElse(null);
+        AppUser user = appUserRepository.findById(id).orElse(null);
+        if (user == null)
+            throw new AppException(HttpStatus.NOT_FOUND, "Користувача не знайдено");
+        return user;
     }
 
     public AppUserDTO createUser(AppUserCreateDTO newUser) {
@@ -38,8 +41,6 @@ public class AppUserService {
 
     public AppUserDTO updateUser(int id, AppUserUpdateDTO updatedUser) {
         AppUser user = findUserById(id);
-        if (user == null)
-            throw new AppException(HttpStatus.NOT_FOUND, "Користувача не знайдено");
         if (updatedUser.getUsername() != null)
             user.setUsername(updatedUser.getUsername());
         if (updatedUser.getEmail() != null)
