@@ -38,9 +38,9 @@ public class CronController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Cron>> getAllCron(
+    public ResponseEntity<List<Cron>> getAllCrons(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size) {
-        return ResponseEntity.ok(cronService.getAllCron(page, size));
+        return ResponseEntity.ok(cronService.getAllCrons(page, size));
     }
 }

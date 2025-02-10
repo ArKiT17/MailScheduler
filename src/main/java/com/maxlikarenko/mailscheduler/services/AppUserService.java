@@ -66,4 +66,8 @@ public class AppUserService {
         }
         return userPage.getContent();
     }
+
+    public List<AppUser> getAllUsers() {
+        return appUserRepository.findAll();
+    }
 }

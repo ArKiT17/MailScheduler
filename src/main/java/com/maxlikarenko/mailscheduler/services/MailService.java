@@ -6,6 +6,8 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class MailService {
     private final JavaMailSender mailSender;
@@ -38,5 +40,11 @@ public class MailService {
                 String.format("Імʼя користувача: %s\nДата та час створення: %s", user.getUsername(), user.getCreatedOn())
         );
         return true;
+    }
+
+    public void sendInfoToAllUsers() {
+        List<AppUser> users = appUserService.getAllUsers();
+        for (AppUser user : users)
+            sendInfoByUserId(user.getId());
     }
 }

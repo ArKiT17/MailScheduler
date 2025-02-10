@@ -28,8 +28,8 @@ public class AppUserController {
     }
 
     @PutMapping("/{userId}")
-    public ResponseEntity<AppUserDTO> updateUser(@PathVariable int userId, @RequestBody @Valid AppUserUpdateDTO updateUser) {
-        return ResponseEntity.ok(appUserService.updateUser(userId, updateUser));
+    public ResponseEntity<AppUserDTO> updateUser(@PathVariable int userId, @RequestBody @Valid AppUserUpdateDTO updatedUser) {
+        return ResponseEntity.ok(appUserService.updateUser(userId, updatedUser));
     }
 
     @DeleteMapping("/{userId}")
