@@ -1,5 +1,6 @@
 package com.maxlikarenko.mailscheduler.controllers;
 
+import com.maxlikarenko.mailscheduler.LogType;
 import com.maxlikarenko.mailscheduler.services.MailService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,7 +23,7 @@ public class MailController {
     @PostMapping("/{userId}")
     public ResponseEntity<Map<String, Boolean>> sendMail(@PathVariable int userId) {
         Map<String, Boolean> response = new HashMap<>();
-        response.put("sent", mailService.sendInfoByUserId(userId));
+        response.put("sent", mailService.sendInfoByUserId(userId, LogType.REST));
         return ResponseEntity.ok(response);
     }
 }
