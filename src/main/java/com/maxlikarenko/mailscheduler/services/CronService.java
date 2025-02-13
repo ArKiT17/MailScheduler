@@ -41,7 +41,7 @@ public class CronService {
 
     public CronDTO createCron(CronDTO newCron) {
         if (isInvalidExpression(newCron.getExpression())) {
-            throw new AppException("Невірний формат cron-виразу");
+            throw new AppException(HttpStatus.BAD_REQUEST, "Невірний формат cron-виразу");
         }
         Cron cron = new Cron();
         cron.setExpression(newCron.getExpression());
@@ -53,7 +53,7 @@ public class CronService {
 
     public CronDTO updateCron(int id, CronDTO updatedCron) {
         if (isInvalidExpression(updatedCron.getExpression())) {
-            throw new AppException("Невірний формат cron-виразу");
+            throw new AppException(HttpStatus.BAD_REQUEST, "Невірний формат cron-виразу");
         }
         Cron cron = findCronById(id);
         cron.setExpression(updatedCron.getExpression());

@@ -3,7 +3,6 @@ package com.maxlikarenko.mailscheduler.controllers;
 import com.maxlikarenko.mailscheduler.entities.AppUser;
 import com.maxlikarenko.mailscheduler.models.AppUserCreateDTO;
 import com.maxlikarenko.mailscheduler.models.AppUserDTO;
-import com.maxlikarenko.mailscheduler.models.AppUserUpdateDTO;
 import com.maxlikarenko.mailscheduler.services.AppUserService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
@@ -28,7 +27,7 @@ public class AppUserController {
     }
 
     @PutMapping("/{userId}")
-    public ResponseEntity<AppUserDTO> updateUser(@PathVariable int userId, @RequestBody @Valid AppUserUpdateDTO updatedUser) {
+    public ResponseEntity<AppUserDTO> updateUser(@PathVariable int userId, @RequestBody @Valid AppUserDTO updatedUser) {
         return ResponseEntity.ok(appUserService.updateUser(userId, updatedUser));
     }
 

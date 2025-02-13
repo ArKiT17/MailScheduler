@@ -4,7 +4,6 @@ import com.maxlikarenko.mailscheduler.entities.AppUser;
 import com.maxlikarenko.mailscheduler.models.AppException;
 import com.maxlikarenko.mailscheduler.models.AppUserCreateDTO;
 import com.maxlikarenko.mailscheduler.models.AppUserDTO;
-import com.maxlikarenko.mailscheduler.models.AppUserUpdateDTO;
 import com.maxlikarenko.mailscheduler.repositories.AppUserRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -39,7 +38,7 @@ public class AppUserService {
         return new AppUserDTO(appUserRepository.save(appUser));
     }
 
-    public AppUserDTO updateUser(int id, AppUserUpdateDTO updatedUser) {
+    public AppUserDTO updateUser(int id, AppUserDTO updatedUser) {
         AppUser user = findUserById(id);
         if (updatedUser.getUsername() != null)
             user.setUsername(updatedUser.getUsername());

@@ -1,9 +1,11 @@
 package com.maxlikarenko.mailscheduler.models;
 
 import com.maxlikarenko.mailscheduler.entities.AppUser;
+import jakarta.validation.constraints.Email;
 
 public class AppUserDTO {
     private String username;
+    @Email(message = "Невірний формат email")
     private String email;
 
     public AppUserDTO() {}
